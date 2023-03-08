@@ -26,4 +26,8 @@ export class DefaultHeaderComponent extends HeaderComponent {
     super();
     this.user = this.accountService.userValue;
   }
+
+  logout() {
+    this.accountService.logout();
+  }
 }

@@ -7,25 +7,27 @@ import { RegisterComponent } from './register/register.component';
 import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
-import { IconModule } from '@coreui/icons-angular';
+import {IconModule} from '@coreui/icons-angular';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegisterComponent,
-    Page404Component,
-    Page500Component
-  ],
-  imports: [
-    CommonModule,
-    PagesRoutingModule,
-    CardModule,
-    ButtonModule,
-    GridModule,
-    IconModule,
-    FormModule
-  ]
+    declarations: [
+        LoginComponent,
+        RegisterComponent,
+        Page404Component,
+        Page500Component
+    ],
+    imports: [
+        CommonModule,
+        PagesRoutingModule,
+        CardModule,
+        ButtonModule,
+        GridModule,
+        IconModule,
+        FormModule,
+        ReactiveFormsModule
+    ]
 })
 export class PagesModule {
 }

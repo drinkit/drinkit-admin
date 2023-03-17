@@ -1,0 +1,64 @@
+<form>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="name">
+            name
+        </label>
+        <c-col [sm]="10">
+            <input cFormControl id="name" value="{{recipe?.name}}"/>
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="originalName">
+            originalName
+        </label>
+        <c-col [sm]="10">
+            <input cFormControl id="originalName" value="{{recipe?.originalName}}"/>
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="ingredientsWithQuantities">
+            ingredients
+        </label>
+        <c-col [sm]="10" id="ingredientsWithQuantities">
+            <c-input-group *ngFor="let ingredient of recipe?.ingredientsWithQuantities" class="mb-3">
+                <input [value]="ingredient.ingredientId"
+                       aria-describedby="button-addon2"
+                       cFormControl
+                       placeholder="ingredientId"
+                />
+                <input [value]="ingredient.quantity"
+                       aria-describedby="button-addon2"
+                       cFormControl
+                       placeholder="quantity"
+                />
+                <input [value]="ingredient.unit"
+                       aria-describedby="button-addon2"
+                       cFormControl
+                       placeholder="unit"
+                />
+                <button cButton color="secondary" id="button-addon2" type="button" variant="outline">
+                    Remove
+                </button>
+            </c-input-group>
+            <button cButton variant="outline">Add</button>
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="description">
+            description
+        </label>
+        <c-col [sm]="10">
+            <textarea cFormControl id="description" rows="10">{{recipe?.description}}</textarea>
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="published">
+            published
+        </label>
+        <c-col [sm]="2">
+            <input [checked]="recipe?.published" cFormCheckInput id="published" name="published" type="checkbox"/>
+        </c-col>
+    </c-row>
+
+    <button cButton type="submit">Save</button>
+</form>

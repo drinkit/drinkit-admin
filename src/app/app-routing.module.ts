@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 
-import { DefaultLayoutComponent } from './containers';
-import { Page404Component } from './views/pages/page404/page404.component';
-import { Page500Component } from './views/pages/page500/page500.component';
-import { LoginComponent } from './views/pages/login/login.component';
-import { RegisterComponent } from './views/pages/register/register.component';
+import {DefaultLayoutComponent} from './containers';
+import {Page404Component} from './views/pages/page404/page404.component';
+import {Page500Component} from './views/pages/page500/page500.component';
+import {LoginComponent} from './views/pages/login/login.component';
+import {RegisterComponent} from './views/pages/register/register.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'recipes',
     pathMatch: 'full'
   },
   {
@@ -28,22 +28,27 @@ const routes: Routes = [
       {
         path: 'theme',
         loadChildren: () =>
-          import('./views/theme/theme.module').then((m) => m.ThemeModule)
+            import('./views/theme/theme.module').then((m) => m.ThemeModule)
       },
       {
         path: 'base',
         loadChildren: () =>
-          import('./views/base/base.module').then((m) => m.BaseModule)
+            import('./views/base/base.module').then((m) => m.BaseModule)
+      },
+      {
+        path: 'recipes',
+        loadChildren: () =>
+            import('./recipes/recipes.module').then((m) => m.RecipesModule)
       },
       {
         path: 'buttons',
         loadChildren: () =>
-          import('./views/buttons/buttons.module').then((m) => m.ButtonsModule)
+            import('./views/buttons/buttons.module').then((m) => m.ButtonsModule)
       },
       {
         path: 'forms',
         loadChildren: () =>
-          import('./views/forms/forms.module').then((m) => m.CoreUIFormsModule)
+            import('./views/forms/forms.module').then((m) => m.CoreUIFormsModule)
       },
       {
         path: 'charts',
@@ -100,7 +105,7 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  {path: '**', redirectTo: 'dashboard'}
+  {path: '**', redirectTo: 'recipes'}
 ];
 
 @NgModule({

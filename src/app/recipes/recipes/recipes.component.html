@@ -1,0 +1,22 @@
+<table cTable>
+    <thead>
+    <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">originalName</th>
+        <th scope="col">addedBy</th>
+        <th scope="col">createdDate</th>
+        <th scope="col">published</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let recipe of recipes" routerLink="../edit/{{recipe.id}}" style="cursor: pointer">
+        <th scope="row">{{recipe.id}}</th>
+        <td>{{recipe.name}}</td>
+        <td>{{recipe.originalName}}</td>
+        <td>{{recipe.addedBy}}</td>
+        <td>{{recipe.createdDate}}</td>
+        <td>{{recipe.published}}</td>
+    </tr>
+    </tbody>
+</table>

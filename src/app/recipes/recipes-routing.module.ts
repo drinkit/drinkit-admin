@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {RecipesComponent} from "./recipes/recipes.component";
 import {RecipeEditorComponent} from "./recipe-editor/recipe-editor.component";
+import {ImageEditorComponent} from "./image-editor/image-editor.component";
 
 
 const routes: Routes = [
@@ -28,6 +29,13 @@ const routes: Routes = [
                 component: RecipeEditorComponent,
                 data: {
                     title: 'Recipe Editor'
+                }
+            },
+            {
+                path: 'edit/:id/image',
+                component: ImageEditorComponent,
+                data: {
+                    title: 'Image Editor'
                 }
             },
         ],

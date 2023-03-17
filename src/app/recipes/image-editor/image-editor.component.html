@@ -1,0 +1,42 @@
+<div *ngIf="recipe">
+    <h1>{{recipe.name}}</h1>
+    <c-row><input (change)="fileChangeEvent($event)" type="file"/></c-row>
+    <c-card-group class="mb-4 w-auto">
+        <c-card style="width: 384px">
+            <image-cropper (cropperReady)="cropperReady()"
+                           (imageCropped)="imageCropped($event)"
+                           (imageLoaded)="imageLoaded($event)"
+                           (loadImageFailed)="loadImageFailed()"
+                           [aspectRatio]="384/512"
+                           [imageChangedEvent]="imageChangedEvent"
+                           [resizeToHeight]="512"
+                           [resizeToWidth]="384"
+                           format="webp"
+                           style="height: 512px"
+            />
+            <c-card-body>
+                <h5 cCardTitle>Original image</h5>
+            </c-card-body>
+            <c-card-footer>
+                <small class="text-medium-emphasis">Size: {{this.imageCompress.byteCount(originalImage)}}</small>
+            </c-card-footer>
+        </c-card>
+        <c-card *ngIf="croppedImage" style="width: 384px">
+            <c-row>
+                <c-col><img [src]="croppedImage" alt="croppedImage" cAlign="middle" cBorder
+                            style="height: 512px; width: 384px"/></c-col>
+                <c-col><img [src]="compressedImage" alt="thumbnail" cAlign="bottom"/></c-col>
+            </c-row>
+            <c-card-body>
+                <h5 cCardTitle>Cropped image</h5>
+            </c-card-body>
+            <c-card-footer>
+                <small class="text-medium-emphasis">
+                    Size: {{this.imageCompress.byteCount(croppedImage)}}.
+                    Thumbnail size:  {{this.imageCompress.byteCount(compressedImage)}}
+                </small>
+            </c-card-footer>
+        </c-card>
+    </c-card-group>
+    <button *ngIf="croppedImage" cButton type="submit">Update image</button>
+</div>

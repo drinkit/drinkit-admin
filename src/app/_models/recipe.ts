@@ -7,8 +7,8 @@ export class Recipe {
   originalName!: string
   // options?: todo
   ingredientsWithQuantities: Ingredient[] = []
-  // val imageUrl: String?, todo
-  // val thumbnailUrl: String?, todo
+  imageUrl?: string
+  thumbnailUrl?: string
   published!: boolean
   createdDate!: string
   addedBy?: string

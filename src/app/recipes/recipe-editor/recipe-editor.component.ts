@@ -16,7 +16,6 @@ export class RecipeEditorComponent implements OnInit {
         private route: ActivatedRoute,
         private service: RecipesService
     ) {
-        this.recipe
     }
 
     ngOnInit(): void {

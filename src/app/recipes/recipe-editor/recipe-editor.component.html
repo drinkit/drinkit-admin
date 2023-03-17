@@ -1,5 +1,20 @@
 <form>
     <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="image">
+            image
+        </label>
+        <c-col [sm]="10">
+            <img
+                    [src]="recipe?.thumbnailUrl"
+                    alt="wtf"
+                    class="d-block"
+                    id="image"
+                    loading="lazy"
+                    routerLink="image"
+            />
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
         <label [sm]="2" cCol cLabel="col" for="name">
             name
         </label>

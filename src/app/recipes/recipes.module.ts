@@ -3,13 +3,16 @@ import {CommonModule} from '@angular/common';
 import {RecipesComponent} from "./recipes/recipes.component";
 import {RecipeEditorComponent} from "./recipe-editor/recipe-editor.component";
 import {RecipesRoutingModule} from "./recipes-routing.module";
-import {ButtonModule, FormModule, GridModule, TableModule} from "@coreui/angular";
+import {ButtonModule, CardModule, FormModule, GridModule, TableModule, UtilitiesModule} from "@coreui/angular";
+import {ImageEditorComponent} from './image-editor/image-editor.component';
+import {ImageCropperModule} from "ngx-image-cropper";
 
 
 @NgModule({
     declarations: [
         RecipesComponent,
-        RecipeEditorComponent
+        RecipeEditorComponent,
+        ImageEditorComponent
     ],
     imports: [
         CommonModule,
@@ -17,7 +20,10 @@ import {ButtonModule, FormModule, GridModule, TableModule} from "@coreui/angular
         TableModule,
         FormModule,
         GridModule,
-        ButtonModule
+        ButtonModule,
+        ImageCropperModule,
+        CardModule,
+        UtilitiesModule
     ]
 })
 export class RecipesModule {

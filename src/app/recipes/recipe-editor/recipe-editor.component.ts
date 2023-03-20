@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {Recipe} from "../../_models/recipe";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Ingredient, IngredientWithQuantity, Recipe} from "../../_models/recipe";
 import {RecipesService} from "../../_services/recipes.service";
+import {AccountService} from "../../_services/account.service";
 
 @Component({
     selector: 'app-recipe-editor',
@@ -10,19 +11,44 @@ import {RecipesService} from "../../_services/recipes.service";
 })
 export class RecipeEditorComponent implements OnInit {
 
-    recipe?: Recipe | null
+    recipe: Recipe | undefined
+    ingredients: Ingredient[] | undefined
 
     constructor(
         private route: ActivatedRoute,
-        private service: RecipesService
+        private router: Router,
+        private service: RecipesService,
+        private accountService: AccountService
     ) {
     }
 
     ngOnInit(): void {
+        if (!this.accountService.userValue) {
+            this.router.navigate(["/login"])
+        }
         this.route.params.subscribe(params => {
+            this.service.listIngredients().subscribe(it =>
+                this.ingredients = it.sort((a, b) => a.name.localeCompare(b.name)))
             const id = params['id']
-            this.service.getRecipe(id).subscribe(recipe => this.recipe = recipe)
+            if (id) {
+                this.service.getRecipe(id).subscribe(recipe => this.recipe = recipe)
+            } else {
+                this.recipe = new Recipe()
+            }
         })
     }
 
+    addIngredient() {
+        this.recipe?.ingredientsWithQuantities.push(new IngredientWithQuantity())
+    }
+
+    removeIngredient(i: number) {
+        this.recipe?.ingredientsWithQuantities.splice(i, 1)
+    }
+
+    onSubmit() {
+        this.service.saveRecipe(this.recipe!).subscribe(it => {
+            this.recipe = it;
+        })
+    }
 }

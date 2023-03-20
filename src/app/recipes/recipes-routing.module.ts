@@ -32,6 +32,13 @@ const routes: Routes = [
                 }
             },
             {
+                path: 'new',
+                component: RecipeEditorComponent,
+                data: {
+                    title: 'Recipe Editor'
+                }
+            },
+            {
                 path: 'edit/:id/image',
                 component: ImageEditorComponent,
                 data: {

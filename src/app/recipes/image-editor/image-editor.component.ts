@@ -55,4 +55,9 @@ export class ImageEditorComponent {
         // show message
     }
 
+    onSubmit() {
+        this.service.uploadImage(this.recipe!.id, this.croppedImage, this.compressedImage).subscribe(it => {
+            console.log(it)
+        })
+    }
 }

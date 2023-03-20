@@ -3,9 +3,18 @@ import {CommonModule} from '@angular/common';
 import {RecipesComponent} from "./recipes/recipes.component";
 import {RecipeEditorComponent} from "./recipe-editor/recipe-editor.component";
 import {RecipesRoutingModule} from "./recipes-routing.module";
-import {ButtonModule, CardModule, FormModule, GridModule, TableModule, UtilitiesModule} from "@coreui/angular";
+import {
+    ButtonGroupModule,
+    ButtonModule,
+    CardModule,
+    FormModule,
+    GridModule,
+    TableModule,
+    UtilitiesModule
+} from "@coreui/angular";
 import {ImageEditorComponent} from './image-editor/image-editor.component';
 import {ImageCropperModule} from "ngx-image-cropper";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -23,7 +32,9 @@ import {ImageCropperModule} from "ngx-image-cropper";
         ButtonModule,
         ImageCropperModule,
         CardModule,
-        UtilitiesModule
+        UtilitiesModule,
+        FormsModule,
+        ButtonGroupModule
     ]
 })
 export class RecipesModule {

@@ -1,12 +1,12 @@
 export class Recipe {
 
   id!: number
-  // cocktailTypeId?: todo
+  cocktailTypeId?: number
   description!: string
   name!: string
   originalName!: string
-  // options?: todo
-  ingredientsWithQuantities: Ingredient[] = []
+  options: number[] = []
+  ingredientsWithQuantities: IngredientWithQuantity[] = []
   imageUrl?: string
   thumbnailUrl?: string
   published!: boolean
@@ -14,8 +14,13 @@ export class Recipe {
   addedBy?: string
 }
 
-export class Ingredient {
+export class IngredientWithQuantity {
   ingredientId!: number
   quantity?: number
   unit?: string
+}
+
+export class Ingredient {
+  id!: number
+  name!: string
 }

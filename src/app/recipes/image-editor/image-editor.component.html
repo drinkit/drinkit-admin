@@ -38,5 +38,5 @@
             </c-card-footer>
         </c-card>
     </c-card-group>
-    <button *ngIf="croppedImage" cButton type="submit">Update image</button>
+    <button (click)="onSubmit()" *ngIf="croppedImage" cButton>Update image</button>
 </div>

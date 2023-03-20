@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {Ingredient, IngredientWithQuantity, Recipe} from "../../_models/recipe";
 import {RecipesService} from "../../_services/recipes.service";
-import {AccountService} from "../../_services/account.service";
 
 @Component({
     selector: 'app-recipe-editor',
@@ -17,15 +16,11 @@ export class RecipeEditorComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private service: RecipesService,
-        private accountService: AccountService
+        private service: RecipesService
     ) {
     }
 
     ngOnInit(): void {
-        if (!this.accountService.userValue) {
-            this.router.navigate(["/login"])
-        }
         this.route.params.subscribe(params => {
             this.service.listIngredients().subscribe(it =>
                 this.ingredients = it.sort((a, b) => a.name.localeCompare(b.name)))

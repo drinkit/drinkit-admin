@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {RecipesComponent} from "./recipes/recipes.component";
 import {RecipeEditorComponent} from "./recipe-editor/recipe-editor.component";
 import {ImageEditorComponent} from "./image-editor/image-editor.component";
+import {AuthGuardService} from "../_services/auth-guard.service";
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
             {
                 path: 'edit/:id',
                 component: RecipeEditorComponent,
+                canActivate: [AuthGuardService],
                 data: {
                     title: 'Recipe Editor'
                 }
@@ -34,6 +36,7 @@ const routes: Routes = [
             {
                 path: 'new',
                 component: RecipeEditorComponent,
+                canActivate: [AuthGuardService],
                 data: {
                     title: 'Recipe Editor'
                 }
@@ -41,6 +44,7 @@ const routes: Routes = [
             {
                 path: 'edit/:id/image',
                 component: ImageEditorComponent,
+                canActivate: [AuthGuardService],
                 data: {
                     title: 'Image Editor'
                 }

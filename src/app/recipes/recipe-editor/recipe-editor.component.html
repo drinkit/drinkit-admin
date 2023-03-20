@@ -1,0 +1,98 @@
+<div *ngIf="recipe">
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="image">
+            image
+        </label>
+        <c-col [sm]="10">
+            <img
+                    [src]="recipe.thumbnailUrl"
+                    alt="wtf"
+                    class="d-block"
+                    id="image"
+                    loading="lazy"
+                    routerLink="image"
+            />
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="name">
+            name
+        </label>
+        <c-col [sm]="10">
+            <input [(ngModel)]="recipe.name" cFormControl id="name"/>
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="originalName">
+            originalName
+        </label>
+        <c-col [sm]="10">
+            <input [(ngModel)]="recipe.originalName" cFormControl id="originalName"/>
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="cocktailTypeId">
+            cocktailTypeId
+        </label>
+        <c-col [sm]="10">
+            <c-button-group id="cocktailTypeId">
+                <input [(ngModel)]="recipe.cocktailTypeId"
+                       [value]="1" class="btn-check" id="radio1" type="radio"/>
+                <label cButton cFormCheckLabel for="radio1" variant="ghost">Long</label>
+                <input [(ngModel)]="recipe.cocktailTypeId"
+                       [value]="2" class="btn-check" id="radio2" type="radio"/>
+                <label cButton cFormCheckLabel for="radio2" variant="ghost">Short</label>
+                <input [(ngModel)]="recipe.cocktailTypeId"
+                       [value]="3" class="btn-check" id="radio3"
+                       type="radio"/>
+                <label cButton cFormCheckLabel for="radio3" variant="ghost">Shot</label>
+            </c-button-group>
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="ingredientsWithQuantities">
+            ingredients
+        </label>
+        <c-col [sm]="10" id="ingredientsWithQuantities">
+            <c-input-group *ngFor="let ingredient of recipe.ingredientsWithQuantities; index as i" class="mb-3">
+                <select [(ngModel)]="ingredient.ingredientId" aria-label="Default select example" cSelect required>
+                    <option value="">Select ingredient</option>
+                    <option *ngFor="let ingr of ingredients" [value]="ingr.id">{{ingr.name}}</option>
+                </select>
+                <input [(ngModel)]="ingredient.quantity"
+                       aria-describedby="button-addon2"
+                       cFormControl
+                       placeholder="quantity"
+                />
+                <input [(ngModel)]="ingredient.unit"
+                       aria-describedby="button-addon2"
+                       cFormControl
+                       placeholder="unit"
+                />
+                <button (click)="removeIngredient(i)" cButton color="secondary" id="button-addon2" type="button"
+                        variant="outline">
+                    Remove
+                </button>
+            </c-input-group>
+            <button (click)="addIngredient()" cButton variant="outline">Add</button>
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="description">
+            description
+        </label>
+        <c-col [sm]="10">
+            <textarea [(ngModel)]="recipe.description" cFormControl id="description" rows="10"></textarea>
+        </c-col>
+    </c-row>
+    <c-row class="mb-3">
+        <label [sm]="2" cCol cLabel="col" for="published">
+            published
+        </label>
+        <c-col [sm]="2">
+            <input [checked]="recipe.published" cFormCheckInput id="published" name="published" type="checkbox"/>
+        </c-col>
+    </c-row>
+
+    <button (click)="onSubmit()" cButton>{{recipe.id ? 'Update' : 'Create'}}</button>
+</div>
